@@ -1,0 +1,226 @@
+/ START Off Sidebar (right)
+%nav
+  %div{:role => "tabpanel"}
+    / Nav tabs
+    %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
+      %li.nav-item{:role => "presentation"}
+        %a.nav-link.active{"aria-controls" => "app-settings", "data-toggle" => "tab", :href => "#app-settings", :role => "tab"}
+          %em.icon-equalizer.fa-lg
+      %li.nav-item{:role => "presentation"}
+        %a.nav-link{"aria-controls" => "app-chat", "data-toggle" => "tab", :href => "#app-chat", :role => "tab"}
+          %em.icon-user.fa-lg
+    / Tab panes
+    .tab-content
+      #app-settings.tab-pane.fade.active.show{:role => "tabpanel"}
+        %h3.text-center.text-thin.mt-4 Settings
+        .p-2
+          %h4.text-muted.text-thin Themes
+          .row.row-flush.mb-2
+            .col.mb-2
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-a.css')}"}
+                  %input{:checked => "checked", :name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-info
+                    %span.color.bg-info-light
+                  %span.color.bg-white
+            .col.mb-2
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-b.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-green
+                    %span.color.bg-green-light
+                  %span.color.bg-white
+            .col.mb-2
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-c.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-purple
+                    %span.color.bg-purple-light
+                  %span.color.bg-white
+            .col.mb-2
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-d.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-danger
+                    %span.color.bg-danger-light
+                  %span.color.bg-white
+          .row.row-flush.mb-2
+            .col.mb-2
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-e.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-info-dark
+                    %span.color.bg-info
+                  %span.color.bg-gray-dark
+            .col.mb-2
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-f.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-green-dark
+                    %span.color.bg-green
+                  %span.color.bg-gray-dark
+            .col.mb-2
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-g.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-purple-dark
+                    %span.color.bg-purple
+                  %span.color.bg-gray-dark
+            .col.mb-2
+              .setting-color
+                %label{"data-load-css" => "#{asset_path('angle/themes/theme-h.css')}"}
+                  %input{:name => "setting-theme", :type => "radio"}/
+                  %span.icon-check
+                  %span.split
+                    %span.color.bg-danger-dark
+                    %span.color.bg-danger
+                  %span.color.bg-gray-dark
+        .p-2
+          %h4.text-muted.text-thin Layout
+          .clearfix
+            %p.float-left Fixed
+            .float-right
+              %label.switch
+                %input#chk-fixed{"data-toggle-state" => "layout-fixed", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.float-left Boxed
+            .float-right
+              %label.switch
+                %input#chk-boxed{"data-toggle-state" => "layout-boxed", :type => "checkbox"}/
+                %span
+        .p-2
+          %h4.text-muted.text-thin Aside
+          .clearfix
+            %p.float-left Collapsed
+            .float-right
+              %label.switch
+                %input#chk-collapsed{"data-toggle-state" => "aside-collapsed", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.float-left Collapsed Text
+            .float-right
+              %label.switch
+                %input#chk-collapsed-text{"data-toggle-state" => "aside-collapsed-text", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.float-left Float
+            .float-right
+              %label.switch
+                %input#chk-float{"data-toggle-state" => "aside-float", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.float-left Hover
+            .float-right
+              %label.switch
+                %input#chk-hover{"data-toggle-state" => "aside-hover", :type => "checkbox"}/
+                %span
+          .clearfix
+            %p.float-left Show Scrollbar
+            .float-right
+              %label.switch
+                %input#chk-scroll{"data-target" => ".sidebar", "data-toggle-state" => "show-scrollbar", :type => "checkbox"}/
+                %span
+      #app-chat.tab-pane.fade{:role => "tabpanel"}
+        %h3.text-center.text-thin.mt-4 Connections
+        .list-group
+          / START list title
+          .list-group-item.border-0
+            %small.text-muted ONLINE
+          / END list title
+          .list-group-item.list-group-item-action.border-0
+            .media
+              %img.align-self-center.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('angle/user/05.jpg')}"}/
+              .media-body.text-truncate
+                %a{:href => "#"}
+                  %strong Juan Sims
+                %br/
+                %small.text-muted Designeer
+              .ml-auto
+                %span.circle.bg-success.circle-lg
+          .list-group-item.list-group-item-action.border-0
+            .media
+              %img.align-self-center.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('angle/user/06.jpg')}"}/
+              .media-body.text-truncate
+                %a{:href => "#"}
+                  %strong Maureen Jenkins
+                %br/
+                %small.text-muted Designeer
+              .ml-auto
+                %span.circle.bg-success.circle-lg
+          .list-group-item.list-group-item-action.border-0
+            .media
+              %img.align-self-center.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('angle/user/07.jpg')}"}/
+              .media-body.text-truncate
+                %a{:href => "#"}
+                  %strong Billie Dunn
+                %br/
+                %small.text-muted Designeer
+              .ml-auto
+                %span.circle.bg-danger.circle-lg
+          .list-group-item.list-group-item-action.border-0
+            .media
+              %img.align-self-center.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('angle/user/08.jpg')}"}/
+              .media-body.text-truncate
+                %a{:href => "#"}
+                  %strong Tomothy Roberts
+                %br/
+                %small.text-muted Designeer
+              .ml-auto
+                %span.circle.bg-warning.circle-lg
+          / START list title
+          .list-group-item.border-0
+            %small.text-muted OFFLINE
+          / END list title
+          .list-group-item.list-group-item-action.border-0
+            .media
+              %img.align-self-center.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('angle/user/09.jpg')}"}/
+              .media-body.text-truncate
+                %a{:href => "#"}
+                  %strong Lawrence Robinson
+                %br/
+                %small.text-muted Designeer
+              .ml-auto
+                %span.circle.bg-warning.circle-lg
+          .list-group-item.list-group-item-action.border-0
+            .media
+              %img.align-self-center.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('angle/user/10.jpg')}"}/
+              .media-body.text-truncate
+                %a{:href => "#"}
+                  %strong Tyrone Owens
+                %br/
+                %small.text-muted Designeer
+              .ml-auto
+                %span.circle.bg-warning.circle-lg
+        .px-3.py-4.text-center
+          / Optional link to list more users
+          %a.btn.btn-purple.btn-sm{:href => "#", :title => "See more contacts"}
+            %strong Load more..
+        / Extra items
+        .px-3.py-2
+          %p
+            %small.text-muted Tasks completion
+          .progress.progress-xs.m-0
+            .progress-bar.bg-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: 80%;"}
+              %span.sr-only 80% Complete
+        .px-3.py-2
+          %p
+            %small.text-muted Upload quota
+          .progress.progress-xs.m-0
+            .progress-bar.bg-warning{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width: 40%;"}
+              %span.sr-only 40% Complete
+/ END Off Sidebar (right)

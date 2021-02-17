@@ -1,0 +1,493 @@
+.unwrap
+  .bg-cover{:style => "background-image: url(#{asset_path 'angle/profile-bg.jpg'})"}
+    .p-4.text-center.text-white
+      %img.img-thumbnail.rounded-circle.thumb128{:alt => "Image", :src => "#{@user.image64}"}/
+      %h3.m-0= @user.full_name
+      %p= @user.employment
+      %p= @user.description
+  .text-center.bg-gray-dark.p-3.mb-4
+    .row
+      .col-4.br
+        %h3.m-0= @exp_years
+        %p.m-0
+          %span.d-none.d-md-inline Years
+          %span of experience
+      .col-4.br
+        %h3.m-0 12+
+        %p.m-0 Programming languages
+      .col-4
+        %h3.m-0= @user.certifications.count
+        %p.m-0 Diploms / Certifications
+  .p-3
+    .row
+      .col-xl-9
+        / START timeline
+        %ul.timeline
+          %li.timeline-separator{"data-datetime" => "Future"}
+          / START timeline item
+          %li
+            .timeline-badge.purple
+              %em.fas.fa-question
+            .timeline-card
+              .popover.right
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://pbs.twimg.com/profile_images/1152210193553530880/izCypy4b_400x400.jpg')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Yova AG ?
+                      = succeed "Zürich (ZH), Switzerland - " do
+                        %br/
+                      %span ?
+                  %p
+                    %em Backend Engineer
+                  %p
+                    %span Yova is the leading digital platform for investing with a sustainability impact. Yova customers invest directly into companies that help to solve global problems, e.g. by fighting climate change or by promoting human rights. All investments are professionally diversified portfolios that are designed for attractive financial returns.
+                  %p
+                    %ul
+                      %li Work on the Yova’s product backend
+                      %li Deliver a functional logic for features that improve Yova product
+                      %li Help to implement process & methods to support a growing tech team
+                      %li Work closely with the Product team
+                  %p.text-muted.my-2 Frequently used technologies/tools
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://tttlabs.ro/wp-content/uploads/2018/03/blog_ruby3_logo.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Programming languages
+                      .text-sm.text-muted Ruby, Javascript, Python, Sass
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://www.yaya.today/img/referral/Technologies/tech_rubyonrails.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Frameworks / Libraries
+                      .text-sm.text-muted Ruby on Rails, Angular
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://sileotech.com/wp-content/uploads/2018/03/DZYq1NzU0AEn12e.jpg')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Tools / Software / Protocols
+                      .text-sm.text-muted REST APIs, Git, Amazon Web Services, Kubernetes + Google Cloud
+          / END timeline item
+          / START timeline separator
+          %li.timeline-separator{"data-datetime" => "Present days"}
+          / END timeline separator
+          / START timeline item
+          %li.timeline-inverted
+            .timeline-badge.info
+              %em.fas.fa-scroll
+            .timeline-card
+              .popover.left
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://www.salesforceben.com/wp-content/uploads/2015/11/download.png')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Salesforce Trailhead Learning Platform
+                      = succeed "Bach (SV), Switzerland - " do
+                        %br/
+                      %span Current days
+                  %p
+                    %em Salesforce Certifiaction for Heroku Architecture Designer
+          / END timeline item
+          / START timeline separator
+          %li.timeline-separator{"data-datetime" => "2018"}
+          / END timeline separator
+          / START timeline item
+          %li
+            .timeline-badge.green
+              %em.fas.fa-briefcase
+            .timeline-card
+              .popover.right
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://media-exp1.licdn.com/dms/image/C4D0BAQFFAuBC50lg7A/company-logo_200_200/0/1519911509938?e=1621468800&v=beta&t=tDy2fgrDz02zkDu1XTeecgblzzqLjmbnz-Ug8ZZf9iE')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Technevalue GmbH
+                      = succeed "Bach (SV), Switzerland - " do
+                        %br/
+                      %span October 2018 to Today
+                  %p
+                    %em IT Consultant & Software Engineer
+                  %p
+                    %span TechneValue is a company providing 360° business consulting services addressing all the needs of enterprises aiming to optimize their performance in fast-paced, hyper-competitive market.
+                  %p
+                    %ul
+                      %li Designed and implemented a large number of software integrations between telephony and computer (CTI)
+                      %li Designed and implemented a large number of software integrations between cloud software and/or CRMs through REST API
+                      %li Development of plug-ins for Genesys Products (PureEngage, PureCloud) and for CRMs (Dynamics365, SugarCRM, CRM Custom...)
+                      %li Designed and implemented REST APIs endpoints and server solutions (proxies, stand-alone applications, scripts)
+                  %p.text-muted.my-2 Frequently used technologies/tools
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://cdn.freebiesupply.com/logos/thumbs/2x/java-4-logo.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Programming languages
+                      .text-sm.text-muted Java, Javascript, PHP, C#
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Frameworks / Libraries
+                      .text-sm.text-muted Spring Boot, jQuery, Angular, NodeJs
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://lh3.googleusercontent.com/proxy/FrDdOmzE3W_lD6skNWfcNkP5s-OBgXkgR3dq7k13B2OxPPmUG_k_DFf4CrHgKGny0c9L-6dGNjU91s5qYiVvA9RK5XI51Ap2ANa6n4Gh')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Databases
+                      .text-sm.text-muted PostgreSQL, Oracle, Teradata, SQLite
+          / END timeline item
+          / START timeline item
+          %li.timeline-inverted
+            .timeline-badge.success
+              %em.fas.fa-graduation-cap
+            .timeline-card
+              .popover.left
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://upload.wikimedia.org/wikipedia/it/2/27/Politecnico_di_Torino_-_Logo.svg')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Polytechnic University of Turin
+                      = succeed "Torino (TO) Italy - " do
+                        %br/
+                      %span July 2018
+                  %p
+                    %em Master Degree in Computer Engineering - Second level degree in Computer engineering
+          / END timeline item
+          / START timeline separator
+          %li.timeline-separator{"data-datetime" => "2016"}
+          / END timeline separator
+          / START timeline item
+          %li
+            .timeline-badge.green
+              %em.fas.fa-briefcase
+            .timeline-card
+              .popover.right
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://media-exp1.licdn.com/dms/image/C560BAQE7DWtLjPGOGg/company-logo_200_200/0/1563543292598?e=1621468800&v=beta&t=2XPPqGx_Se7UiZ7sbDKcBWgndd80X5J-wuZr6xRepTo')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Self-Employed
+                      = succeed "North Italy, Italy - " do
+                        %br/
+                      %span January 2016 to October 2018
+                  %p
+                    %em Back-End Developer / Full Stack Developer
+                  %p
+                    %span Managed to design and realize several software and web-applications for important companies in North Italy such as Prink S.P.A and Ferrero S.P.A.
+                  %p
+                    %ul
+                      %li Development of ERPs for business and customer management
+                      %li Development of brochure website with the goal of increments customers’ revenues
+                      %li Development of eCommerce websites with thousands daily accesses
+                      %li Business data analysis and realization of Key Performance Indicators, metrics, exports, reports
+                  %p.text-muted.my-2 Frequently used technologies/tools
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://www.unixmen.com/wp-content/uploads/2014/01/lamp-server.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong LAMP Stack
+                      .text-sm.text-muted Linux, Apache, MySQL, PHP, HTML/CSS/Javascript
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://equestsolutions.net/wp-content/uploads/2014/08/php-logo.jpg')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Programming languages
+                      .text-sm.text-muted PHP, Javascript, Ruby, VisualBasic.NET, C#
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://www.yaya.today/img/referral/Technologies/tech_rubyonrails.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Frameworks / Libraries
+                      .text-sm.text-muted Ruby on Rails 4, ASP.NET, jQuery
+          / END timeline item
+          / START timeline separator
+          %li.timeline-separator{"data-datetime" => "2013"}
+          / END timeline separator
+          / START timeline item
+          %li
+            .timeline-badge.green
+              %em.fas.fa-briefcase
+            .timeline-card
+              .popover.right
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://shop.iriparo.com/c/1427-medium_default/riparazioni.jpg')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong iRiparo S.R.L.
+                      = succeed "Saluzzo (CN), Italy - " do
+                        %br/
+                      %span October 2013 to December 2015
+                  %p
+                    %em IT Manager / Backend Developer
+                  %p
+                    %span iRiparo is a leader company specialized in the repair of the main models of smartphones and tablets of various brands. Established in 2009, the franchising project was born in 2013 and currently counts a wide network of points of sale in Italy and Europe.
+                  %p
+                    %ul
+                      %li Development of the internal ERP, currently used by more than 300 hundred stores all over the Europe
+                      %li Development of company brochure website and eCommerce
+                      %li IT assistance and mentoring to franchising affiliates
+                      %li Interventions on hardware components and network infrastructure
+                      %li More in general, any activity related to the company's IT sector
+                  %p.text-muted.my-2 Frequently used technologies/tools
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://www.unixmen.com/wp-content/uploads/2014/01/lamp-server.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong LAMP Stack
+                      .text-sm.text-muted Linux, Apache, MySQL, PHP, HTML/CSS/Javascript
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://equestsolutions.net/wp-content/uploads/2014/08/php-logo.jpg')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Programming languages
+                      .text-sm.text-muted PHP, Javascript, Ruby, VisualBasic.NET, C#
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://www.yaya.today/img/referral/Technologies/tech_rubyonrails.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Frameworks / Libraries
+                      .text-sm.text-muted Ruby on Rails 4, ASP.NET, jQuery
+          / END timeline item
+          / START timeline item
+          %li.timeline-inverted
+            .timeline-badge.green
+              %em.fas.fa-briefcase
+            .timeline-card
+              .popover.right
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://pbs.twimg.com/profile_images/653565022690496512/u0UareSO_400x400.png')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong BSnewline
+                      = succeed "Verzuolo (CN), Italy - " do
+                        %br/
+                      %span September 2013 to May 2015
+                  %p
+                    %em Systems Engineer and IT Technician
+                  %p
+                    %span Bsnewline is a company that offers professional hosting and streaming services, pec, domain registration and more in general networking assistance.
+                  %p
+                    %ul
+                      %li Installation, configuration and maintenance of servers and VPS
+                      %li Installation and configuration of software for web hosting, file hosting, streaming and DNS services
+                      %li Interventions on hardware components and network infrastructure
+                      %li Management/maintenance of websites and the creation of web solutions
+                  %p.text-muted.my-2 Frequently used technologies/tools
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://www.unixmen.com/wp-content/uploads/2014/01/lamp-server.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong LAMP Stack
+                      .text-sm.text-muted Linux, Apache (or Nginx), MySQL, PHP, HTML/CSS/Javascript
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong CMS
+                      .text-sm.text-muted WordPress, Prestashop, Joomla!
+                  .media.bb.p-2
+                    %img.mr-2.rounded-circle.thumb32{:alt => "Image", :src => "#{image_path('https://www.creativefreedom.co.uk/wp-content/uploads/2017/01/cpanel-logo.png')}"}/
+                    .media-body
+                      %p.m-0
+                        %a{:href => "#"}
+                          %strong Various Software / Administration Tools
+                      .text-sm.text-muted CPanel, Plesk, FileZilla Server, IMAP and POP3 Server, PowerDNS
+          / END timeline item
+          / START timeline item
+          %li
+            .timeline-badge.warning
+              %em.fas.fa-university
+            .timeline-card
+              .popover.left
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://upload.wikimedia.org/wikipedia/it/2/27/Politecnico_di_Torino_-_Logo.svg')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Polytechnic University of Turin
+                      = succeed "Torino (TO) Italy - " do
+                        %br/
+                      %span March 2013
+                  %p
+                    %em Part-time enrollment in M.Sc. in Computer Engineering - Second level degree in Computer engineering
+          / END timeline item
+          / START timeline item
+          %li.timeline-inverted
+            .timeline-badge.success
+              %em.fas.fa-graduation-cap
+            .timeline-card
+              .popover.left
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://upload.wikimedia.org/wikipedia/it/2/27/Politecnico_di_Torino_-_Logo.svg')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Polytechnic University of Turin
+                      = succeed "Torino (TO) Italy - " do
+                        %br/
+                      %span March 2013
+                  %p
+                    %em Bachelor's Degree in Computer Engineering - First level degree in Information Technology
+          / END timeline item
+          / START timeline separator
+          %li.timeline-separator{"data-datetime" => "2010"}
+          / END timeline separator
+          / START timeline item
+          %li
+            .timeline-badge.info
+              %em.fas.fa-scroll
+            .timeline-card
+              .popover.left
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://armacad.info/images/2016/04/British%20Council-ZLmU3Mn4GNMJuEDdkSkPvfY2DOkSYWz_.jpg')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong British Council
+                      = succeed "Torino (TO) Italy - " do
+                        %br/
+                      %span May 2010
+                  %p
+                    %em IELTS Certification - Level B2 English
+          / END timeline item
+          / START timeline separator
+          %li.timeline-separator{"data-datetime" => "2009"}
+          / END timeline separator
+          / START timeline item
+          %li
+            .timeline-badge.warning
+              %em.fas.fa-university
+            .timeline-card
+              .popover.left
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://upload.wikimedia.org/wikipedia/it/2/27/Politecnico_di_Torino_-_Logo.svg')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Polytechnic University of Turin
+                      = succeed "Torino (TO) Italy - " do
+                        %br/
+                      %span October 2009
+                  %p
+                    %em Enrollment in B.Sc. in Computer Engineering - First level degree in Information Technology
+          / END timeline item
+          %li.timeline-inverted
+            .timeline-badge.success
+              %em.fas.fa-graduation-cap
+            .timeline-card
+              .popover.right
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('http://www.vallauri.edu/public/ita/grafiche/0/Testata_sx.jpg')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong I.I.S. "Giancarlo Vallauri"
+                      = succeed "Fossano (CN) Italy - " do
+                        %br/
+                      %span July 2009
+                  %p.m-0
+                    %em Graduation in high school, Software Programming
+          / END timeline item
+          / START timeline item
+          %li
+            .timeline-badge.info
+              %em.fas.fa-scroll
+            .timeline-card
+              .popover.left
+                .arrow
+                .popover-body
+                  .d-flex.align-items-center.mb-3
+                    %img.mr-3.rounded-circle.thumb48{:alt => "Image", :src => "#{image_path('https://scontent-zrh1-1.xx.fbcdn.net/v/t1.0-9/69368714_2557016774320583_8931840149407399936_n.png?_nc_cat=110&ccb=3&_nc_sid=85a577&_nc_ohc=RjXZtzAhpJYAX8SkRGa&_nc_ht=scontent-zrh1-1.xx&oh=9c17bfee418fedf480bd000e7902590e&oe=6051E1FA')}"}/
+                    %p.m-0
+                      %a.text-muted{:href => "#"}
+                        %strong Cisco Networking Academy
+                      = succeed "Fossano (CN) Italy - " do
+                        %br/
+                      %span May 2009
+                  %p
+                    %em Routing and Switching (CCNA) Certification
+          / END timeline item
+          / START timeline item
+          %li.timeline-end
+            %a.timeline-badge{:href => "#"}
+              %em.fa.fa-arrow-up
+          / END timeline item
+        / END timeline
+      .col-xl-3
+        .card.card-default
+          .card-body
+            .text-center
+              %h3.mt-0= @user.full_name
+              %p= @user.employment
+            %hr/
+            %ul.list-unstyled.px-4
+              %li
+                %em.fa.fa-home.fa-fw.mr-3>
+                = @user.addresses.first.complete_address
+              %li
+                %em.fa.fa-envelope.fa-fw.mr-3
+                %a{:href => "mailto:alessandro@guglielmoni.info"} alessandro@guglielmoni.info
+              %li
+                %em.fa.fa-phone.fa-fw.mr-3
+                %a{:href => "tel:+41 79 604 39 81"} +41 79 604 39 81
+        .card.card-default
+          .card-header
+            Companies
+          .list-group
+            / START User status
+            - @jobs.each do |job|
+              %a.p-2.mt-0.list-group-item.d-flex{:href => "#{job.company_website}"}
+                / Contact avatar
+                %img.mr-3.rounded-circle.thumb32{:alt => "Image", :src => "#{job.company_image64}"}/
+                / Contact info
+                %span
+                  %strong= job.company
+                  %br/
+                  %span.text-sm.text-muted
+                    = job.task
+                    %br
+                    = "#{job.human_from} - #{job.human_to}"
+                %span.ml-auto.circle.bg-success.circle-lg
+              / END User status
+        .card.card-default
+          .card-header
+            Education
+          .list-group
+            - @degrees.each do |degree|
+              %a.list-group-item.list-group-item.action.d-flex{:href => "#"}
+                %div
+                  %h4= degree.institute
+                  %span= degree.course_name
+                %em.ml-auto.fa.fa-graduation.fa-lg.fa-fw.text-muted.mt-2

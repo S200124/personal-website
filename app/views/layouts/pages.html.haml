@@ -1,0 +1,30 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+    %meta{:content => "Bootstrap Admin App + Ruby on Rails", :name => "description"}/
+    %meta{:content => "app, responsive, jquery, bootstrap, dashboard, admin", :name => "keywords"}/
+    %title Angle - Bootstrap Admin Template
+    / =============== APP STYLES ===============
+    = stylesheet_link_tag 'application', media: 'all', id: "maincss"
+    / =============== VIEW STYLES ===============
+    = stylesheet_link_tag params[:controller]
+    = yield :vendor_css_area
+    = csrf_meta_tags
+    = csp_meta_tag
+  %body
+    .wrapper
+      = yield
+    .p-lg.text-center
+      %span ©
+      %span 2016
+      %span -
+      %span Angle
+      %br/
+      %span Bootstrap Admin Template
+    / =============== APP SCRIPTS ===============
+    = javascript_packs_with_chunks_tag 'application', params[:controller] if pack_exists?(params[:controller])
+    = yield :vendor_js_area
+    = yield :body_area

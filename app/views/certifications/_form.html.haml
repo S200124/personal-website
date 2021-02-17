@@ -1,0 +1,16 @@
+= form_for @certification do |f|
+  - if @certification.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@certification.errors.count, "error")} prohibited this certification from being saved:"
+      %ul
+        - @certification.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.text_field :institute
+    = f.text_field :level
+    = f.text_field :name
+    = f.text_field :from
+    = f.text_field :to
+    = f.select :profile_id, @profiles, :prompt => 'Select'
+    = f.submit 'Save'

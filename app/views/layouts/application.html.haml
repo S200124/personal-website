@@ -1,0 +1,39 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+    %meta{:content => "Bootstrap Admin App + Ruby on Rails", :name => "description"}/
+    %meta{:content => "app, responsive, jquery, bootstrap, dashboard, admin", :name => "keywords"}/
+    %title Angle - Bootstrap Admin Template
+    / =============== VIEW STYLES ===============
+    = stylesheet_link_tag params[:controller]
+    / =============== APP STYLES ===============
+    = stylesheet_link_tag 'application', media: 'all', id: "maincss"
+    = yield :vendor_css_area
+    = csrf_meta_tags
+    = csp_meta_tag
+  %body
+    .wrapper
+      / top navbar
+      %header.topnavbar-wrapper
+        = render partial: "layouts/partials/topnavbar"
+      / sidebar
+      %aside.aside-container
+        = render partial: "layouts/partials/sidebar"
+      / offsidebar
+      %aside.offsidebar.d-none
+        = render partial: "layouts/partials/offsidebar"
+      / Main section
+      %section.section-container
+        / Page content
+        .content-wrapper
+          = yield
+      / Page footer
+      %footer.footer-container
+        = render partial: "layouts/partials/footer"
+    / =============== APP SCRIPTS ===============
+    = javascript_packs_with_chunks_tag 'application', params[:controller] if pack_exists?(params[:controller])
+    = yield :vendor_js_area
+    = yield :body_area

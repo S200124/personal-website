@@ -1,0 +1,100 @@
+/ START Top Navbar
+%nav.navbar.topnavbar.navbar-expand-lg.navbar-light
+  / START navbar header
+  .navbar-header
+    %a.navbar-brand{:href => "#/"}
+      .brand-logo
+        %img.img-fluid{:alt => "App Logo", :src => "#{image_path('angle/logo.png')}"}/
+      .brand-logo-collapsed
+        %img.img-fluid{:alt => "App Logo", :src => "#{image_path('angle/logo-single.png')}"}/
+    %button.navbar-toggler{"data-target" => "#topnavbar", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+  / END navbar header
+  / START Nav wrapper
+  #topnavbar.navbar-collapse.collapse
+    / START Left navbar
+    %ul.nav.navbar-nav.mr-auto.flex-column.flex-lg-row
+      %li.nav-item.dropdown
+        %a.nav-link.dropdown-toggle.dropdown-toggle-nocaret{"data-toggle" => "dropdown", :href => "#dashboard"} Dashboard
+        .dropdown-menu.animated.fadeIn
+          %a{:class => "dropdown-item #{'active' if controller?('dashboard')  action?('dashboard_v1')}", :href => "/dashboard/dashboard_v1"}
+            Dashboard v1
+          %a{:class => "dropdown-item #{'active' if controller?('dashboard')  action?('dashboard_v2')}", :href => "/dashboard/dashboard_v2"}
+            Dashboard v2
+          %a{:class => "dropdown-item #{'active' if controller?('dashboard')  action?('dashboard_v3')}", :href => "/dashboard/dashboard_v3"}
+            Dashboard v3
+      %li{:class => "nav-item #{'active' if controller?('widgets')  action?('index')}"}
+        %a.nav-link{:href => "/widgets"} Widgets
+    / END Left navbar
+    / START Right Navbar
+    %ul.navbar-nav.flex-row
+      / START lock screen
+      %li.nav-item
+        %a.nav-link{:href => "/pages/lock", :title => "Lock screen"}
+          %em.icon-lock
+      / END lock screen
+      / Search icon
+      %li.nav-item
+        %a.nav-link{"data-search-open" => "", :href => "#"}
+          %em.icon-magnifier
+      / Fullscreen (only desktops)
+      %li.nav-item.d-none.d-md-block
+        %a.nav-link{"data-toggle-fullscreen" => "", :href => "#"}
+          %em.fa.fa-expand
+      / START Alert menu
+      %li.nav-item.dropdown.dropdown-list
+        %a.nav-link.dropdown-toggle.dropdown-toggle-nocaret{"data-toggle" => "dropdown", :href => "#"}
+          %em.icon-bell
+          %span.badge.badge-danger 11
+        / START Dropdown menu
+        .dropdown-menu.dropdown-menu-right.animated.flipInX
+          .dropdown-item
+            / START list group
+            .list-group
+              / list item
+              .list-group-item.list-group-item-action
+                .media
+                  .align-self-start.mr-2
+                    %em.fab.fa-twitter.fa-2x.text-info
+                  .media-body
+                    %p.m-0 New followers
+                    %p.m-0.text-muted.text-sm 1 new follower
+              / list item
+              .list-group-item.list-group-item-action
+                .media
+                  .align-self-start.mr-2
+                    %em.fa.fa-envelope.fa-2x.text-warning
+                  .media-body
+                    %p.m-0 New e-mails
+                    %p.m-0.text-muted.text-sm You have 10 new emails
+              / list item
+              .list-group-item.list-group-item-action
+                .media
+                  .align-self-start.mr-2
+                    %em.fa.fa-tasks.fa-2x.text-success
+                  .media-body
+                    %p.m-0 Pending Tasks
+                    %p.m-0.text-muted.text-sm 11 pending task
+              / last list item
+              .list-group-item.list-group-item-action
+                %span.d-flex.align-items-center
+                  %span.text-sm More notifications
+                  %span.badge.badge-danger.ml-auto 14
+            / END list group
+        / END Dropdown menu
+      / END Alert menu
+      / START Offsidebar button
+      %li.nav-item
+        %a.nav-link{"data-no-persist" => "true", "data-toggle-state" => "offsidebar-open", :href => "#"}
+          %em.icon-notebook
+      / END Offsidebar menu
+    / END Right Navbar
+  / END Nav wrapper
+  / START Search form
+  %form.navbar-form{:action => "search.html", :role => "search"}
+    .form-group
+      %input.form-control{:placeholder => "Type and hit enter ...", :type => "text"}/
+      .fa.fa-times.navbar-form-close{"data-search-dismiss" => ""}
+    %button.d-none{:type => "submit"} Submit
+  / END Search form
+/ END Top Navbar
