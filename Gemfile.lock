@@ -107,11 +107,12 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
-    minitest (5.14.3)
+    minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.5)
     nokogiri (1.11.1-x64-mingw32)
       racc (~> 1.4)
+    pg (1.2.3)
     public_suffix (4.0.6)
     puma (3.12.6)
     racc (1.5.2)
@@ -150,7 +151,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (2.0.3)
+    regexp_parser (2.1.1)
     ruby_parser (3.15.1)
       sexp_processor (~> 4.9)
     rubyzip (2.3.0)
@@ -176,7 +177,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     temple (0.8.2)
     thor (1.1.0)
     thread_safe (0.3.6)
@@ -214,11 +214,11 @@ DEPENDENCIES
   capybara (>= 2.15)
   haml-rails
   jbuilder (~> 2.7)
+  pg (~> 1.2.3)
   puma (~> 3.11)
   rails (~> 6.0.0)
   sass-rails (~> 5)
   selenium-webdriver
-  sqlite3 (~> 1.4)
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
