@@ -17,16 +17,16 @@
   %body
     .wrapper
       / top navbar
-      %header.topnavbar-wrapper
+      %header.topnavbar-wrapper{ style: 'display: none;' }
         = render partial: "layouts/partials/topnavbar"
       / sidebar
-      %aside.aside-container
+      %aside.aside-container{ style: 'display: none;' }
         = render partial: "layouts/partials/sidebar"
       / offsidebar
       %aside.offsidebar.d-none
         = render partial: "layouts/partials/offsidebar"
       / Main section
-      %section.section-container
+      %section.section-container{ style: 'margin-left: 0px;' }
         / Page content
         .content-wrapper
           = yield

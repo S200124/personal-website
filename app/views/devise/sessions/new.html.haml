@@ -1,0 +1,42 @@
+%h2 Log in
+  .block-center.mt-4.wd-xl
+    / START card
+    .card.card-flat
+      .card-header.text-center.bg-dark
+        %a{href: "#"}
+            %img.block-center.rounded{alt: "Image", src: "#{image_path('angle/logo.png')}"}/
+      .card-body
+        %p.text-center.py-2 SIGN IN TO CONTINUE.
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .form-group
+              .input-group.with-focus
+                = f.email_field :email, autofocus: true, autocomplete: "email"
+                .input-group-append
+                  %span.input-group-text.text-muted.bg-transparent.border-left-0
+                    %em.fa.fa-envelope
+          .form-group
+            .input-group.with-focus
+              = f.password_field :password, autocomplete: "current-password"
+              .input-group-append
+                %span.input-group-text.text-muted.bg-transparent.border-left-0
+                  %em.fa.fa-lock
+          - if devise_mapping.rememberable?
+            .clearfix
+              .checkbox.c-checkbox.float-left.mt-0
+                = f.label :remember_me
+                  = f.check_box :remember_me
+                  %span.fa.fa-check
+              .float-right
+                %a.text-muted{href: "/pages/recover"} Forgot your password?
+          = f.submit "Log in"
+      %p.pt-3.text-center Need to Signup?
+      %a.btn.btn-block.btn-secondary{href: "/pages/register"} Register Now
+      = render "devise/shared/links"
+    / END card
+  .p-3.text-center
+    %span.mr-2 ©
+    %span 2020
+    %span.mr-2 -
+    %span Angle
+    %br/
+    %span Bootstrap Admin Template
