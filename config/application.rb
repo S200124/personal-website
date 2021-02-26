@@ -36,10 +36,7 @@ module Angle
                                  'angle/themes/theme-h.css'
                                 ]
     # Controller assets
-    config.assets.precompile += [
-                                 # Stylesheets
-                                 'singleview.css'
-                                ]
+    # config.assets.precompile += [ # Stylesheets ]
 
   end
 end
