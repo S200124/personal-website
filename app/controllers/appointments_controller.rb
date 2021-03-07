@@ -5,6 +5,8 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments or /appointments.json
   def index
+    recreateFixedAppointments # create Fixed Appointments
+
     @appointments = Appointment.all
 
     respond_to do |format|
@@ -71,6 +73,102 @@ class AppointmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appointment_params
-      params.fetch(:appointment, {}).permit(:title, :start, :end, :allDay, :backgroundColor, :borderColor)
+      params.fetch(:appointment, {}).permit(:title, :start, :end, :allDay, :backgroundColor, :borderColor, :daysOfWeek, :startTime, :endTime, :fixed, :recurring)
+    end
+
+    def recreateFixedAppointments
+        Appointment.where(fixed: true).delete_all
+
+        Appointment.new({
+          title: "Morning",
+          daysOfWeek: ['1', '2', '3', '4', '5'].to_json,
+          startTime: "00:00:00",
+          endTime: "08:00:00",
+          backgroundColor: "#592321",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: true
+        }).save
+        Appointment.new({
+          title: "Evening",
+          daysOfWeek: ['1', '2', '3', '4', '5'].to_json,
+          startTime: "18:00:00",
+          endTime: "24:00:00",
+          backgroundColor: "#592321",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: true
+        }).save
+        Appointment.new({
+          title: "Lunch",
+          daysOfWeek: ['1', '2', '3', '4', '5'].to_json,
+          startTime: "12:00:00",
+          endTime: "13:00:00",
+          backgroundColor: "#592321",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: true
+        }).save
+
+        Appointment.new({
+          title: "1",
+          start: DateTime.parse("#{Date.today}T10:15:00+01:00").to_time.to_i * 1000,
+          end: DateTime.parse("#{Date.today}T10:30:00+01:00").to_time.to_i * 1000,
+          allDay: false,
+          backgroundColor: "#808080",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: false
+        }).save
+        Appointment.new({
+          title: "2",
+          start: DateTime.parse("#{Date.today + 1.days}T11:00:00+01:00").to_time.to_i * 1000,
+          end: DateTime.parse("#{Date.today + 1.days}T11:30:00+01:00").to_time.to_i * 1000,
+          allDay: false,
+          backgroundColor: "#808080",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: false
+        }).save
+        Appointment.new({
+          title: "3",
+          start: DateTime.parse("#{Date.today + 1.days}T15:30:00+01:00").to_time.to_i * 1000,
+          end: DateTime.parse("#{Date.today + 1.days}T16:30:00+01:00").to_time.to_i * 1000,
+          allDay: false,
+          backgroundColor: "#808080",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: false
+        }).save
+        Appointment.new({
+          title: "4",
+          start: DateTime.parse("#{Date.today + 2.days}T10:00:00+01:00").to_time.to_i * 1000,
+          end: DateTime.parse("#{Date.today + 2.days}T10:30:00+01:00").to_time.to_i * 1000,
+          allDay: false,
+          backgroundColor: "#808080",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: false
+        }).save
+        Appointment.new({
+          title: "5",
+          start: DateTime.parse("#{Date.today + 2.days}T11:00:00+01:00").to_time.to_i * 1000,
+          end: DateTime.parse("#{Date.today + 2.days}T12:30:00+01:00").to_time.to_i * 1000,
+          allDay: false,
+          backgroundColor: "#808080",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: false
+        }).save
+        Appointment.new({
+          title: "6",
+          start: DateTime.parse("#{Date.today + 2.days}T17:30:00+01:00").to_time.to_i * 1000,
+          end: DateTime.parse("#{Date.today + 2.days}T18:00:00+01:00").to_time.to_i * 1000,
+          allDay: false,
+          backgroundColor: "#808080",
+          borderColor: "#000000",
+          fixed: true,
+          recurring: false
+        }).save
     end
 end

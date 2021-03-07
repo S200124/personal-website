@@ -24,8 +24,12 @@ $(function() {
             dataType: 'json',
             success: function (data) {
               successCallback(data.map(function(obj) {
-                obj.start = new Date(obj.start);
-                obj.end = new Date(obj.end);
+                if(obj.start)
+                  obj.start = new Date(obj.start);
+                if(obj.end)
+                  obj.end = new Date(obj.end);
+                if(obj.fixed)
+                  obj.rendering = 'background';
                 return obj;
               }));
             },
@@ -35,42 +39,44 @@ $(function() {
         });
       },
       eventClick: function(info) {
-        swal({
-          title: 'Are you sure?',
-          text: 'Your will not be able to recover this appointment!',
-          icon: 'warning',
-          buttons: {
-            cancel: true,
-            confirm: {
-              text: 'Yes, delete it!',
-              value: true,
-              visible: true,
-              className: "bg-danger",
-              closeModal: true
+        if(info.event.rendering !== 'background') { // Here there should be, ad example, a check on customer.
+          swal({
+            title: 'Are you sure?',
+            text: 'Your will not be able to recover this appointment!',
+            icon: 'warning',
+            buttons: {
+              cancel: true,
+              confirm: {
+                text: 'Yes, delete it!',
+                value: true,
+                visible: true,
+                className: "bg-danger",
+                closeModal: true
+              }
             }
-          }
-        }).then((isConfirm) => {
-          if (isConfirm) {
-            if(info.event.id) {
-              $.ajax({
-                  type: 'DELETE',
-                  url: 'appointments/' + info.event.id + '.json',
-                  dataType: 'json',
-                  success: function (data) {
-                    removeEvent(info.event);
-                  },
-                  error: function (request, error, status) {
-                    swal('Error!', status, error);
-                  }
-              });
+          }).then((isConfirm) => {
+            if (isConfirm) {
+              if(info.event.id) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: 'appointments/' + info.event.id + '.json',
+                    dataType: 'json',
+                    success: function (data) {
+                      removeEvent(info.event);
+                    },
+                    error: function (request, error, status) {
+                      swal('Error!', status, error);
+                    }
+                });
+              }
+              else {
+                removeEvent(info.event);
+              }
+            } else {
+              swal('Cancelled', 'Your appointment is safe :)', 'error');
             }
-            else {
-              removeEvent(info.event);
-            }
-          } else {
-            swal('Cancelled', 'Your appointment is safe :)', 'error');
-          }
-        });
+          });
+        }
       },
       plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin, bootstrapPlugin],
       themeSystem: 'bootstrap',
@@ -88,13 +94,16 @@ $(function() {
           info.event.setProp('backgroundColor', styles.backgroundColor);
           info.event.setProp('borderColor', styles.borderColor);
 
-          saveEvent(info.event, 'POST');
+          saveEvent(info.event, 'POST', null);
       },
       eventResize: function(info) {
-        saveEvent(info.event, 'PATCH');
+        saveEvent(info.event, 'PATCH', info.prevEvent);
       },
       eventDrop: function(info) {
-        saveEvent(info.event, 'PATCH');
+        saveEvent(info.event, 'PATCH', info.oldEvent);
+      },
+      eventOverlap: function(stillEvent, movingEvent) {
+        return ((new URLSearchParams(window.location.search)).get('overlap') === 'false');
       }
   });
 
@@ -112,7 +121,7 @@ $(function() {
   calendar.render();
 });
 
-function saveEvent(event, method) {
+function saveEvent(event, method, oldEvent) {
   const startEpoch = (new Date(event.start)).getTime();
   const endEpoch = (new Date(event.end)).getTime();
 
@@ -134,14 +143,17 @@ function saveEvent(event, method) {
       success: function (data) {
         eventObj.id = data.id;
         calendar.addEvent(eventObj);
+        event.remove();
         swal('Success!', 'Your appointment has been set.', 'success');
       },
       error: function (request, error, status) {
-        swal('Error!', status, error);
+        event.remove();
+        if(oldEvent != null)
+          calendar.addEvent(oldEvent);
+        swal('Error!', "This timeslot is not available!", error);
       }
   });
 
-  event.remove();
 }
 
 function removeEvent(event) {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_175539) do
+ActiveRecord::Schema.define(version: 2021_03_07_220833) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -34,14 +34,19 @@ ActiveRecord::Schema.define(version: 2021_03_07_175539) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "title"
     t.integer "start"
     t.integer "end"
     t.boolean "allDay"
     t.string "backgroundColor"
     t.string "borderColor"
+    t.text "daysOfWeek"
+    t.text "startTime"
+    t.text "endTime"
+    t.boolean "fixed"
+    t.boolean "recurring", default: false
   end
 
   create_table "certifications", force: :cascade do |t|
