@@ -1,0 +1,32 @@
+.content-heading
+  %div
+    Appointment Calendar
+    %small Drag and Drop your appointment. For delete an event, click on it.
+/ START row
+.calendar-app
+  .row
+    .col-xl-3.col-lg-4
+      .row
+        .col-lg-12.col-md-6.col-12
+          / START card
+          .card.card-default
+            .card-header
+              %h4.card-title Appointment types
+            / Default external events list
+            .card-body
+              #external-events-list.external-events
+                .fce-event.bg-green Carious removal
+                .fce-event.bg-danger General cleaning
+                .fce-event.bg-info Inspection
+                .fce-event.bg-warning Dental implant
+                .fce-event.bg-inverse Braces installation
+          / END card
+    .col-xl-9.col-lg-8
+      / START card
+      .card.card-default
+        .card-body
+          / START calendar
+          #calendar
+          / END calendar
+      / END card
+  / END row

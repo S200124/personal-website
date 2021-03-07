@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_103720) do
+ActiveRecord::Schema.define(version: 2021_03_07_175539) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 2021_02_26_103720) do
     t.datetime "to"
     t.index ["address_id"], name: "index_addresses_profiles_on_address_id"
     t.index ["profile_id"], name: "index_addresses_profiles_on_profile_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.integer "start"
+    t.integer "end"
+    t.boolean "allDay"
+    t.string "backgroundColor"
+    t.string "borderColor"
   end
 
   create_table "certifications", force: :cascade do |t|

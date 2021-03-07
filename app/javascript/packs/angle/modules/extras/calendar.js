@@ -40,16 +40,7 @@ function initFullCalendar() {
         }
     });
 
-    /* initialize the external events */
-    var containerEl = document.getElementById('external-events-list');
-    new Draggable(containerEl, {
-        itemSelector: '.fce-event',
-        eventData: function(eventEl) {
-            return {
-                title: eventEl.innerText.trim()
-            };
-        }
-    });
+    
 
     calendar.render();
 }
