@@ -6,7 +6,7 @@ class Appointment < ApplicationRecord
   scope :recurring, -> { where(recurring: true) }
   scope :not_recurring, -> { where(recurring: false) }
   scope :id_not_equal, -> (id) { where('id <> ?', id) }
-  scope :operlap, -> (s, e) { where('end > ? AND start < ?', s, e) }
+  scope :operlap, -> (s, e) { where('"end" > ? AND "start" < ?', s, e) }
 
   def check_recurring
     Appointment.recurring.each do |app|
