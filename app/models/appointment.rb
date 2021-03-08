@@ -1,15 +1,16 @@
 class Appointment < ApplicationRecord
 
-  before_save :check_calendar, if: :is_customer?
+  before_save :check_recurring, if: :is_customer?
+  before_save :check_not_recurring, if: :is_customer?
 
-  def check_calendar
-    date = DateTime.strptime("#{self.start/1000}",'%s').to_date
-
-    Appointment.where("id <> ?", (self.id || 0)).each do |app|
-      if (self.date_start() < app.date_end(date)) and (app.date_start(date) < self.date_end())
-        throw :abort if app.recurring and app.days_array.include? "#{date.wday}" or (not app.recurring)
-      end
+  def check_recurring
+    Appointment.where(recurring: true).each do |app|
+      throw :abort if overlap(app) and app.days_array.include? "#{self.event_date.wday}"
     end
+  end
+
+  def check_not_recurring
+    throw :abort unless Appointment.where("id <> ? AND recurring = ? AND (end > ? AND start < ?)", (self.id || 0), false, self.start, self.end).empty?
   end
 
   def is_customer?
@@ -20,20 +21,15 @@ class Appointment < ApplicationRecord
     JSON.parse(daysOfWeek || "[]")
   end
 
-  def date_start(date = nil)
-    if recurring
-      DateTime.parse("#{date}T#{startTime}+01:00").to_time.to_i * 1000 # can be better with dedicated gems
-    else
-      self.start
-    end
+  def overlap(app)
+    date_start = DateTime.parse("#{self.event_date}T#{app.startTime}+01:00").to_time.to_i * 1000
+    date_end = DateTime.parse("#{self.event_date}T#{app.endTime}+01:00").to_time.to_i * 1000 # can be better with dedicated gems
+
+    return ((self.start < date_end) and (date_start < self.end))
   end
 
-  def date_end(date = nil)
-    if recurring
-      DateTime.parse("#{date}T#{endTime}+01:00").to_time.to_i * 1000 # can be better with dedicated gems
-    else
-      self.end
-    end
+  def event_date
+    DateTime.strptime("#{self.start/1000}",'%s').to_date
   end
 
 end
