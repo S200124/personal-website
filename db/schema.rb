@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_220833) do
+ActiveRecord::Schema.define(version: 2021_03_08_102059) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 2021_03_07_220833) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.integer "start"
-    t.integer "end"
-    t.boolean "allDay"
+    t.bigint "end"
+    t.boolean "allDay", default: false
     t.string "backgroundColor"
     t.string "borderColor"
     t.text "daysOfWeek"
     t.text "startTime"
     t.text "endTime"
-    t.boolean "fixed"
+    t.boolean "fixed", default: false
     t.boolean "recurring", default: false
   end
 
