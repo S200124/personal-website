@@ -10,7 +10,7 @@ class Appointment < ApplicationRecord
 
   def check_recurring
     Appointment.recurring.each do |app|
-      throw :abort if overlaps?(app) and (app.days_array & ["#{start_date.wday}", "#{end_date.wday}"]).any?
+      throw :abort if overlaps?(app)
     end
   end
 
@@ -27,10 +27,17 @@ class Appointment < ApplicationRecord
   end
 
   def overlaps?(app)
-    date_start = DateTime.parse("#{start_date}T#{app.startTime}+01:00").to_time.to_i * 1000 # conversion to UNIX epoch can be better probably
-    date_end = DateTime.parse("#{end_date}T#{app.endTime}+01:00").to_time.to_i * 1000
+    if app.recurring
+      date_start = DateTime.parse("#{self.start_date}T#{app.startTime}+01:00").to_time.to_i * 1000 # conversion to UNIX epoch can be better probably
+      date_end = DateTime.parse("#{self.end_date}T#{app.endTime}+01:00").to_time.to_i * 1000
+      valid_days_array = (app.days_array & ["#{self.start_date.wday}", "#{self.end_date.wday}"]).any?
+    else
+      date_start = app.start
+      date_end = app.end
+      valid_days_array = true
+    end
 
-    return ((self.start < date_end) and (date_start < self.end))
+    return (((self.start < date_end) and (date_start < self.end)) and valid_days_array)
   end
 
   def start_date
