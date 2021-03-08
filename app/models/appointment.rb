@@ -28,7 +28,7 @@ class Appointment < ApplicationRecord
 
   def overlaps?(app)
     if app.recurring
-      date_start = DateTime.parse("#{self.start_date}T#{app.startTime}+01:00").to_time.to_i * 1000 # conversion to UNIX epoch can be better probably
+      date_start = DateTime.parse("#{self.start_date}T#{app.startTime}+01:00").to_time.to_i * 1000 # conversion to UNIX epoch can be better
       date_end = DateTime.parse("#{self.end_date}T#{app.endTime}+01:00").to_time.to_i * 1000
       valid_days_array = (app.days_array & ["#{self.start_date.wday}", "#{self.end_date.wday}"]).any?
     else
@@ -41,11 +41,11 @@ class Appointment < ApplicationRecord
   end
 
   def start_date
-    DateTime.strptime("#{self.start/1000}",'%s').to_date
+    DateTime.strptime("#{self.start/1000}",'%s').in_time_zone('Rome').to_date # conversion to date can be better
   end
 
   def end_date
-    DateTime.strptime("#{self.end/1000}",'%s').to_date
+    DateTime.strptime("#{self.end/1000}",'%s').in_time_zone('Rome').to_date
   end
 
 end

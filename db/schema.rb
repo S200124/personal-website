@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_102059) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.integer "start"
+    t.bigint "start"
     t.bigint "end"
     t.boolean "allDay", default: false
     t.string "backgroundColor"

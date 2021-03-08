@@ -128,7 +128,7 @@ function saveEvent(event, method, oldEvent) {
   let eventObj = {
     title: event.title,
     start: startEpoch,
-    end: (endEpoch > startEpoch ? endEpoch : getEndTimeFromStart(startEpoch)),
+    end: (endEpoch > startEpoch ? endEpoch : getEndTimeFromStart(startEpoch, event.allDay)),
     allDay: event.allDay,
     backgroundColor: event.backgroundColor,
     borderColor: event.borderColor
@@ -161,6 +161,8 @@ function removeEvent(event) {
   swal('Deleted!', 'Your appointment has been deleted.', 'success');
 }
 
-function getEndTimeFromStart(start) {
+function getEndTimeFromStart(start, wholeDay) {
+  if(wholeDay)
+    return start + 24 * 60 * 60 * 1000;
   return start + (Number(defaultHours) * 60 + Number(defaultMinutes)) * 60 * 1000;
 }
